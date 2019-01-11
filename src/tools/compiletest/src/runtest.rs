@@ -1842,7 +1842,10 @@ impl<'test> TestCx<'test> {
             None => {}
         }
 
-        if self.props.force_host {
+        // Musl toolchain is build on linux-gnu host
+        // but with proper setup it can behave almost* like native linux-musl.
+        // One difference is "cc" which will link to glibc; force musl cc.
+        if self.props.force_host && !self.config.target.contains("musl") {
             self.maybe_add_external_args(&mut rustc,
                                          self.split_maybe_args(&self.config.host_rustcflags));
         } else {
@@ -1853,6 +1856,11 @@ impl<'test> TestCx<'test> {
                     rustc.arg(format!("-Clinker={}", linker));
                 }
             }
+        }
+
+        // Use dynamic musl for tests because static doesn't allow creating dylibs
+        if self.config.target.contains("musl") {
+            rustc.arg("-Ctarget-feature=-crt-static");
         }
 
         rustc.args(&self.props.compile_flags);
