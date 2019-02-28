@@ -2,7 +2,10 @@
 
 all: $(call DYLIB,return1) $(call DYLIB,return2) $(call NATIVE_STATICLIB,return3)
 	ls $(TMPDIR)
-	$(RUSTC) --print cfg --target x86_64-unknown-linux-musl | $(CGREP) crt-static
+
+    ifneq ($(IS_MUSL_HOST),1)
+	    $(RUSTC) --print cfg --target x86_64-unknown-linux-musl | $(CGREP) crt-static
+    endif
 
 	$(RUSTC) no-deps.rs --cfg foo
 	$(call RUN,no-deps)
