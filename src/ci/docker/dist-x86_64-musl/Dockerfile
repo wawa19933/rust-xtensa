@@ -38,7 +38,7 @@ ENV RUST_CONFIGURE_ARGS \
 # way to produce "super compatible" binaries.
 #
 # See: https://github.com/rust-lang/rust/issues/34978
-#ENV CFLAGS_x86_64_unknown_linux_musl=-Wa,-mrelax-relocations=no
+ENV CFLAGS_x86_64_unknown_linux_musl=-Wa,-mrelax-relocations=no
 
 ENV HOSTS=x86_64-unknown-linux-musl \
     CC_x86_64_unknown_linux_musl=x86_64-linux-musl-gcc \
