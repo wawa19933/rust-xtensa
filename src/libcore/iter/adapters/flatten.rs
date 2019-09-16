@@ -1,5 +1,6 @@
-use fmt;
-use ops::Try;
+use crate::fmt;
+use crate::ops::Try;
+
 use super::super::{Iterator, DoubleEndedIterator, FusedIterator};
 use super::Map;
 
@@ -23,17 +24,19 @@ impl<I: Iterator, U: IntoIterator, F: FnMut(I::Item) -> U> FlatMap<I, U, F> {
 }
 
 #[stable(feature = "rust1", since = "1.0.0")]
-impl<I: Clone, U: Clone + IntoIterator, F: Clone> Clone for FlatMap<I, U, F>
-    where <U as IntoIterator>::IntoIter: Clone
+impl<I: Clone, U, F: Clone> Clone for FlatMap<I, U, F>
+where
+    U: Clone + IntoIterator<IntoIter: Clone>,
 {
     fn clone(&self) -> Self { FlatMap { inner: self.inner.clone() } }
 }
 
 #[stable(feature = "core_impl_debug", since = "1.9.0")]
-impl<I: fmt::Debug, U: IntoIterator, F> fmt::Debug for FlatMap<I, U, F>
-    where U::IntoIter: fmt::Debug
+impl<I: fmt::Debug, U, F> fmt::Debug for FlatMap<I, U, F>
+where
+    U: IntoIterator<IntoIter: fmt::Debug>,
 {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         f.debug_struct("FlatMap").field("inner", &self.inner).finish()
     }
 }
@@ -67,9 +70,10 @@ impl<I: Iterator, U: IntoIterator, F> Iterator for FlatMap<I, U, F>
 
 #[stable(feature = "rust1", since = "1.0.0")]
 impl<I: DoubleEndedIterator, U, F> DoubleEndedIterator for FlatMap<I, U, F>
-    where F: FnMut(I::Item) -> U,
-          U: IntoIterator,
-          U::IntoIter: DoubleEndedIterator
+where
+    F: FnMut(I::Item) -> U,
+    U: IntoIterator,
+    U::IntoIter: DoubleEndedIterator,
 {
     #[inline]
     fn next_back(&mut self) -> Option<U::Item> { self.inner.next_back() }
@@ -104,11 +108,13 @@ impl<I, U, F> FusedIterator for FlatMap<I, U, F>
 #[must_use = "iterators are lazy and do nothing unless consumed"]
 #[stable(feature = "iterator_flatten", since = "1.29.0")]
 pub struct Flatten<I: Iterator>
-where I::Item: IntoIterator {
+where
+    I::Item: IntoIterator,
+{
     inner: FlattenCompat<I, <I::Item as IntoIterator>::IntoIter>,
 }
-impl<I: Iterator> Flatten<I>
-where I::Item: IntoIterator {
+
+impl<I: Iterator<Item: IntoIterator>> Flatten<I> {
     pub(in super::super) fn new(iter: I) -> Flatten<I> {
         Flatten { inner: FlattenCompat::new(iter) }
     }
@@ -116,26 +122,29 @@ where I::Item: IntoIterator {
 
 #[stable(feature = "iterator_flatten", since = "1.29.0")]
 impl<I, U> fmt::Debug for Flatten<I>
-    where I: Iterator + fmt::Debug, U: Iterator + fmt::Debug,
-          I::Item: IntoIterator<IntoIter = U, Item = U::Item>,
+where
+    I: fmt::Debug + Iterator<Item: IntoIterator<IntoIter = U, Item = U::Item>>,
+    U: fmt::Debug + Iterator,
 {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         f.debug_struct("Flatten").field("inner", &self.inner).finish()
     }
 }
 
 #[stable(feature = "iterator_flatten", since = "1.29.0")]
 impl<I, U> Clone for Flatten<I>
-    where I: Iterator + Clone, U: Iterator + Clone,
-          I::Item: IntoIterator<IntoIter = U, Item = U::Item>,
+where
+    I: Clone + Iterator<Item: IntoIterator<IntoIter = U, Item = U::Item>>,
+    U: Clone + Iterator,
 {
     fn clone(&self) -> Self { Flatten { inner: self.inner.clone() } }
 }
 
 #[stable(feature = "iterator_flatten", since = "1.29.0")]
 impl<I, U> Iterator for Flatten<I>
-    where I: Iterator, U: Iterator,
-          I::Item: IntoIterator<IntoIter = U, Item = U::Item>
+where
+    I: Iterator<Item: IntoIterator<IntoIter = U, Item = U::Item>>,
+    U: Iterator,
 {
     type Item = U::Item;
 
@@ -162,8 +171,9 @@ impl<I, U> Iterator for Flatten<I>
 
 #[stable(feature = "iterator_flatten", since = "1.29.0")]
 impl<I, U> DoubleEndedIterator for Flatten<I>
-    where I: DoubleEndedIterator, U: DoubleEndedIterator,
-          I::Item: IntoIterator<IntoIter = U, Item = U::Item>
+where
+    I: DoubleEndedIterator<Item: IntoIterator<IntoIter = U, Item = U::Item>>,
+    U: DoubleEndedIterator,
 {
     #[inline]
     fn next_back(&mut self) -> Option<U::Item> { self.inner.next_back() }
@@ -185,8 +195,10 @@ impl<I, U> DoubleEndedIterator for Flatten<I>
 
 #[stable(feature = "iterator_flatten", since = "1.29.0")]
 impl<I, U> FusedIterator for Flatten<I>
-    where I: FusedIterator, U: Iterator,
-          I::Item: IntoIterator<IntoIter = U, Item = U::Item> {}
+where
+    I: FusedIterator<Item: IntoIterator<IntoIter = U, Item = U::Item>>,
+    U: Iterator,
+{}
 
 /// Real logic of both `Flatten` and `FlatMap` which simply delegate to
 /// this type.
@@ -204,8 +216,9 @@ impl<I, U> FlattenCompat<I, U> {
 }
 
 impl<I, U> Iterator for FlattenCompat<I, U>
-    where I: Iterator, U: Iterator,
-          I::Item: IntoIterator<IntoIter = U, Item = U::Item>
+where
+    I: Iterator<Item: IntoIterator<IntoIter = U, Item = U::Item>>,
+    U: Iterator,
 {
     type Item = U::Item;
 
@@ -273,8 +286,9 @@ impl<I, U> Iterator for FlattenCompat<I, U>
 }
 
 impl<I, U> DoubleEndedIterator for FlattenCompat<I, U>
-    where I: DoubleEndedIterator, U: DoubleEndedIterator,
-          I::Item: IntoIterator<IntoIter = U, Item = U::Item>
+where
+    I: DoubleEndedIterator<Item: IntoIterator<IntoIter = U, Item = U::Item>>,
+    U: DoubleEndedIterator,
 {
     #[inline]
     fn next_back(&mut self) -> Option<U::Item> {
@@ -327,4 +341,3 @@ impl<I, U> DoubleEndedIterator for FlattenCompat<I, U>
             .rfold(init, |acc, iter| iter.rfold(acc, &mut fold))
     }
 }
-

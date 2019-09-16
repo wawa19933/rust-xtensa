@@ -1,0 +1,193 @@
+cargo:rerun-if-changed=build.rs
+cargo:compiler-rt=/home/mabez/.cargo/registry/src/github.com-1ecc6299db9ec823/compiler_builtins-0.1.5/compiler-rt
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/absvdi2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/absvsi2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/absvti2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/addvdi3.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/addvsi3.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/addvti3.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/apple_versioning.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/clzdi2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/clzsi2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/clzti2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/cmpdi2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/cmpti2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/ctzdi2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/ctzsi2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/ctzti2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/divdc3.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/divsc3.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/divxc3.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/extendhfsf2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/ffsti2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/x86_64/floatdisf.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/x86_64/floatdixf.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/x86_64/floatundidf.S
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/x86_64/floatundisf.S
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/x86_64/floatundixf.S
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/int_util.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/muldc3.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/mulsc3.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/mulvdi3.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/mulvsi3.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/mulvti3.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/mulxc3.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/negdf2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/negdi2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/negsf2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/negti2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/negvdi2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/negvsi2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/negvti2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/paritydi2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/paritysi2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/parityti2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/popcountdi2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/popcountsi2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/popcountti2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/powixf2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/subvdi3.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/subvsi3.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/subvti3.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/truncdfhf2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/truncdfsf2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/truncsfhf2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/ucmpdi2.c
+cargo:rerun-if-changed=./compiler-rt/lib/builtins/ucmpti2.c
+TARGET = Some("x86_64-unknown-linux-gnu")
+OPT_LEVEL = Some("0")
+HOST = Some("x86_64-unknown-linux-gnu")
+CC_x86_64-unknown-linux-gnu = None
+CC_x86_64_unknown_linux_gnu = None
+HOST_CC = None
+CC = None
+CFLAGS_x86_64-unknown-linux-gnu = None
+CFLAGS_x86_64_unknown_linux_gnu = None
+HOST_CFLAGS = None
+CFLAGS = None
+DEBUG = Some("false")
+CC_x86_64-unknown-linux-gnu = None
+CC_x86_64_unknown_linux_gnu = None
+HOST_CC = None
+CC = None
+CFLAGS_x86_64-unknown-linux-gnu = None
+CFLAGS_x86_64_unknown_linux_gnu = None
+HOST_CFLAGS = None
+CFLAGS = None
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/absvdi2.o" "-c" "./compiler-rt/lib/builtins/absvdi2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/absvsi2.o" "-c" "./compiler-rt/lib/builtins/absvsi2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/absvti2.o" "-c" "./compiler-rt/lib/builtins/absvti2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/addvdi3.o" "-c" "./compiler-rt/lib/builtins/addvdi3.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/addvsi3.o" "-c" "./compiler-rt/lib/builtins/addvsi3.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/addvti3.o" "-c" "./compiler-rt/lib/builtins/addvti3.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/apple_versioning.o" "-c" "./compiler-rt/lib/builtins/apple_versioning.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/clzdi2.o" "-c" "./compiler-rt/lib/builtins/clzdi2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/clzsi2.o" "-c" "./compiler-rt/lib/builtins/clzsi2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/clzti2.o" "-c" "./compiler-rt/lib/builtins/clzti2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/cmpdi2.o" "-c" "./compiler-rt/lib/builtins/cmpdi2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/cmpti2.o" "-c" "./compiler-rt/lib/builtins/cmpti2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/ctzdi2.o" "-c" "./compiler-rt/lib/builtins/ctzdi2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/ctzsi2.o" "-c" "./compiler-rt/lib/builtins/ctzsi2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/ctzti2.o" "-c" "./compiler-rt/lib/builtins/ctzti2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/divdc3.o" "-c" "./compiler-rt/lib/builtins/divdc3.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/divsc3.o" "-c" "./compiler-rt/lib/builtins/divsc3.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/divxc3.o" "-c" "./compiler-rt/lib/builtins/divxc3.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/extendhfsf2.o" "-c" "./compiler-rt/lib/builtins/extendhfsf2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/ffsti2.o" "-c" "./compiler-rt/lib/builtins/ffsti2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/x86_64/floatdisf.o" "-c" "./compiler-rt/lib/builtins/x86_64/floatdisf.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/x86_64/floatdixf.o" "-c" "./compiler-rt/lib/builtins/x86_64/floatdixf.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/x86_64/floatundidf.o" "-c" "./compiler-rt/lib/builtins/x86_64/floatundidf.S"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/x86_64/floatundisf.o" "-c" "./compiler-rt/lib/builtins/x86_64/floatundisf.S"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/x86_64/floatundixf.o" "-c" "./compiler-rt/lib/builtins/x86_64/floatundixf.S"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/int_util.o" "-c" "./compiler-rt/lib/builtins/int_util.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/muldc3.o" "-c" "./compiler-rt/lib/builtins/muldc3.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/mulsc3.o" "-c" "./compiler-rt/lib/builtins/mulsc3.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/mulvdi3.o" "-c" "./compiler-rt/lib/builtins/mulvdi3.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/mulvsi3.o" "-c" "./compiler-rt/lib/builtins/mulvsi3.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/mulvti3.o" "-c" "./compiler-rt/lib/builtins/mulvti3.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/mulxc3.o" "-c" "./compiler-rt/lib/builtins/mulxc3.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/negdf2.o" "-c" "./compiler-rt/lib/builtins/negdf2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/negdi2.o" "-c" "./compiler-rt/lib/builtins/negdi2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/negsf2.o" "-c" "./compiler-rt/lib/builtins/negsf2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/negti2.o" "-c" "./compiler-rt/lib/builtins/negti2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/negvdi2.o" "-c" "./compiler-rt/lib/builtins/negvdi2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/negvsi2.o" "-c" "./compiler-rt/lib/builtins/negvsi2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/negvti2.o" "-c" "./compiler-rt/lib/builtins/negvti2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/paritydi2.o" "-c" "./compiler-rt/lib/builtins/paritydi2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/paritysi2.o" "-c" "./compiler-rt/lib/builtins/paritysi2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/parityti2.o" "-c" "./compiler-rt/lib/builtins/parityti2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/popcountdi2.o" "-c" "./compiler-rt/lib/builtins/popcountdi2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/popcountsi2.o" "-c" "./compiler-rt/lib/builtins/popcountsi2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/popcountti2.o" "-c" "./compiler-rt/lib/builtins/popcountti2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/powixf2.o" "-c" "./compiler-rt/lib/builtins/powixf2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/subvdi3.o" "-c" "./compiler-rt/lib/builtins/subvdi3.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/subvsi3.o" "-c" "./compiler-rt/lib/builtins/subvsi3.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/subvti3.o" "-c" "./compiler-rt/lib/builtins/subvti3.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/truncdfhf2.o" "-c" "./compiler-rt/lib/builtins/truncdfhf2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/truncdfsf2.o" "-c" "./compiler-rt/lib/builtins/truncdfsf2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/truncsfhf2.o" "-c" "./compiler-rt/lib/builtins/truncsfhf2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/ucmpdi2.o" "-c" "./compiler-rt/lib/builtins/ucmpdi2.c"
+exit code: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-fno-builtin" "-fvisibility=hidden" "-ffreestanding" "-fomit-frame-pointer" "-DVISIBILITY_HIDDEN" "-o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/ucmpti2.o" "-c" "./compiler-rt/lib/builtins/ucmpti2.c"
+exit code: 0
+AR_x86_64-unknown-linux-gnu = None
+AR_x86_64_unknown_linux_gnu = None
+HOST_AR = None
+AR = None
+running: "ar" "crs" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/libcompiler-rt.a" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/absvdi2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/absvsi2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/absvti2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/addvdi3.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/addvsi3.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/addvti3.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/apple_versioning.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/clzdi2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/clzsi2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/clzti2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/cmpdi2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/cmpti2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/ctzdi2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/ctzsi2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/ctzti2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/divdc3.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/divsc3.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/divxc3.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/extendhfsf2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/ffsti2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/x86_64/floatdisf.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/x86_64/floatdixf.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/x86_64/floatundidf.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/x86_64/floatundisf.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/x86_64/floatundixf.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/int_util.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/muldc3.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/mulsc3.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/mulvdi3.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/mulvsi3.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/mulvti3.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/mulxc3.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/negdf2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/negdi2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/negsf2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/negti2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/negvdi2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/negvsi2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/negvti2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/paritydi2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/paritysi2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/parityti2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/popcountdi2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/popcountsi2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/popcountti2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/powixf2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/subvdi3.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/subvsi3.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/subvti3.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/truncdfhf2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/truncdfsf2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/truncsfhf2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/ucmpdi2.o" "/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out/./compiler-rt/lib/builtins/ucmpti2.o"
+exit code: 0
+cargo:rustc-link-lib=static=compiler-rt
+cargo:rustc-link-search=native=/home/mabez/development/rust/rust-xtensa/rust/src/liballoc/target/rls/debug/build/compiler_builtins-3940a6883b5a02e2/out
+cargo:rustc-cfg=use_c

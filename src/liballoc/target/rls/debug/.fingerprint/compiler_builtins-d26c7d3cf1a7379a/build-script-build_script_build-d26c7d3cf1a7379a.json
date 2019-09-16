@@ -1,0 +1,1 @@
+{"rustc":4523464786722908703,"features":"[\"c\", \"cc\", \"compiler-builtins\", \"core\", \"default\", \"mem\", \"rustc-dep-of-std\"]","target":10088282520713642473,"profile":16489401198382439220,"path":9121774466768036936,"deps":[["cc v1.0.28","cc",17518703731443778859]],"local":[{"Precalculated":"0.1.5"}],"rustflags":[],"edition":"Edition2015"}

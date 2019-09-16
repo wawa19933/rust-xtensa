@@ -1,0 +1,1 @@
+{"rustc":6531065846588124902,"features":"[]","target":5222512334263867336,"profile":14574708154261177122,"path":5599834932947650727,"deps":[["smallvec v0.6.7","smallvec",2961299762609998612]],"local":[{"MtimeBased":[[1552425666,44954035],".fingerprint/serialize-3b43f0f488357bfa/dep-lib-serialize-3b43f0f488357bfa"]}],"rustflags":[],"edition":"Edition2018"}

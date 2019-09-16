@@ -8,51 +8,27 @@ use rustc::hir::def_id::DefId;
 use rustc::hir::map::Map;
 use rustc::hir::intravisit::{self, Visitor, NestedVisitorMap};
 use rustc::hir::{self, Node, Destination};
-use syntax::ast;
 use syntax::struct_span_err;
 use syntax_pos::Span;
 use errors::Applicability;
 
 #[derive(Clone, Copy, Debug, PartialEq)]
-enum LoopKind {
-    Loop(hir::LoopSource),
-    WhileLoop,
-}
-
-impl LoopKind {
-    fn name(self) -> &'static str {
-        match self {
-            LoopKind::Loop(hir::LoopSource::Loop) => "loop",
-            LoopKind::Loop(hir::LoopSource::WhileLet) => "while let",
-            LoopKind::Loop(hir::LoopSource::ForLoop) => "for",
-            LoopKind::WhileLoop => "while",
-        }
-    }
-}
-
-#[derive(Clone, Copy, Debug, PartialEq)]
 enum Context {
     Normal,
-    Loop(LoopKind),
+    Loop(hir::LoopSource),
     Closure,
     LabeledBlock,
     AnonConst,
 }
 
 #[derive(Copy, Clone)]
-struct CheckLoopVisitor<'a, 'hir: 'a> {
+struct CheckLoopVisitor<'a, 'hir> {
     sess: &'a Session,
     hir_map: &'a Map<'hir>,
     cx: Context,
 }
 
-pub fn check_crate<'a, 'tcx>(tcx: TyCtxt<'a, 'tcx, 'tcx>) {
-    for &module in tcx.hir().krate().modules.keys() {
-        tcx.ensure().check_mod_loops(tcx.hir().local_def_id(module));
-    }
-}
-
-fn check_mod_loops<'tcx>(tcx: TyCtxt<'_, 'tcx, 'tcx>, module_def_id: DefId) {
+fn check_mod_loops(tcx: TyCtxt<'_>, module_def_id: DefId) {
     tcx.hir().visit_item_likes_in_module(module_def_id, &mut CheckLoopVisitor {
         sess: &tcx.sess,
         hir_map: &tcx.hir(),
@@ -78,14 +54,8 @@ impl<'a, 'hir> Visitor<'hir> for CheckLoopVisitor<'a, 'hir> {
 
     fn visit_expr(&mut self, e: &'hir hir::Expr) {
         match e.node {
-            hir::ExprKind::While(ref e, ref b, _) => {
-                self.with_context(Loop(LoopKind::WhileLoop), |v| {
-                    v.visit_expr(&e);
-                    v.visit_block(&b);
-                });
-            }
             hir::ExprKind::Loop(ref b, _, source) => {
-                self.with_context(Loop(LoopKind::Loop(source)), |v| v.visit_block(&b));
+                self.with_context(Loop(source), |v| v.visit_block(&b));
             }
             hir::ExprKind::Closure(_, ref function_decl, b, _, _) => {
                 self.visit_fn_decl(&function_decl);
@@ -105,34 +75,33 @@ impl<'a, 'hir> Visitor<'hir> for CheckLoopVisitor<'a, 'hir> {
 
                 let loop_id = match label.target_id.into() {
                     Ok(loop_id) => loop_id,
-                    Err(hir::LoopIdError::OutsideLoopScope) => ast::DUMMY_NODE_ID,
+                    Err(hir::LoopIdError::OutsideLoopScope) => hir::DUMMY_HIR_ID,
                     Err(hir::LoopIdError::UnlabeledCfInWhileCondition) => {
                         self.emit_unlabled_cf_in_while_condition(e.span, "break");
-                        ast::DUMMY_NODE_ID
+                        hir::DUMMY_HIR_ID
                     },
-                    Err(hir::LoopIdError::UnresolvedLabel) => ast::DUMMY_NODE_ID,
+                    Err(hir::LoopIdError::UnresolvedLabel) => hir::DUMMY_HIR_ID,
                 };
 
-                if loop_id != ast::DUMMY_NODE_ID {
+                if loop_id != hir::DUMMY_HIR_ID {
                     if let Node::Block(_) = self.hir_map.find(loop_id).unwrap() {
                         return
                     }
                 }
 
                 if opt_expr.is_some() {
-                    let loop_kind = if loop_id == ast::DUMMY_NODE_ID {
+                    let loop_kind = if loop_id == hir::DUMMY_HIR_ID {
                         None
                     } else {
                         Some(match self.hir_map.expect_expr(loop_id).node {
-                            hir::ExprKind::While(..) => LoopKind::WhileLoop,
-                            hir::ExprKind::Loop(_, _, source) => LoopKind::Loop(source),
+                            hir::ExprKind::Loop(_, _, source) => source,
                             ref r => span_bug!(e.span,
                                                "break label resolved to a non-loop: {:?}", r),
                         })
                     };
                     match loop_kind {
                         None |
-                        Some(LoopKind::Loop(hir::LoopSource::Loop)) => (),
+                        Some(hir::LoopSource::Loop) => (),
                         Some(kind) => {
                             struct_span_err!(self.sess, e.span, E0571,
                                              "`break` with value from a `{}` loop",

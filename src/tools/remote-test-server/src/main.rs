@@ -120,7 +120,7 @@ struct RemoveOnDrop<'a> {
     inner: &'a Path,
 }
 
-impl<'a> Drop for RemoveOnDrop<'a> {
+impl Drop for RemoveOnDrop<'_> {
     fn drop(&mut self) {
         t!(fs::remove_dir_all(self.inner));
     }
