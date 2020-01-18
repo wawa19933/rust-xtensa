@@ -1,4 +1,4 @@
-use crate::spec::{abi::Abi, LinkerFlavor, PanicStrategy, Target, TargetOptions, TargetResult};
+use crate::spec::{abi::Abi, LinkerFlavor, LldFlavor, PanicStrategy, Target, TargetOptions, TargetResult};
 // use crate::spec::abi::Abi;
 
 pub fn target() -> TargetResult {
@@ -12,22 +12,13 @@ pub fn target() -> TargetResult {
         target_os: "none".to_string(),
         target_env: String::new(),
         target_vendor: String::new(),
-        linker_flavor: LinkerFlavor::Gcc,
+        linker_flavor: LinkerFlavor::Lld(LldFlavor::Ld),
 
         options: TargetOptions {
-            executables: true,
             cpu: "esp8266".to_string(),
-            // The LLVM backend currently can't generate object files. To
-            // workaround this LLVM generates assembly files which then we feed
-            // to gcc to get object files. For this reason we have a hard
-            // dependency on this specific gcc.
-            // asm_args: vec!["-mcpu=esp8266".to_string()],
-            linker: Some("xtensa-lx106-elf-gcc".to_string()),
-            no_integrated_as: true,
-
+            executables: true,
+            linker: Some("rust-lld".to_string()),
             max_atomic_width: Some(32),
-            atomic_cas: true,
-
             // Because these devices have very little resources having an
             // unwinder is too onerous so we default to "abort" because the
             // "unwind" strategy is very rare.
@@ -37,20 +28,8 @@ pub fn target() -> TargetResult {
             // code because of the extra costs it involves.
             relocation_model: "static".to_string(),
 
-            // Right now we invoke an external assembler and this isn't
-            // compatible with multiple codegen units, and plus we probably
-            // don't want to invoke that many gcc instances.
-            default_codegen_units: Some(1),
-
-            // Since MSP430 doesn't meaningfully support faulting on illegal
-            // instructions, LLVM generates a call to abort() function instead
-            // of a trap instruction. Such calls are 4 bytes long, and that is
-            // too much overhead for such small target.
-            trap_unreachable: false,
-
             // See the thumb_base.rs file for an explanation of this value
             emit_debug_gdb_scripts: false,
-
             abi_blacklist: vec![
                 Abi::Stdcall,
                 Abi::Fastcall,
