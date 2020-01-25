@@ -7,7 +7,7 @@ pub fn target() -> TargetResult {
         target_endian: "little".to_string(),
         target_pointer_width: "32".to_string(),
         target_c_int_width: "32".to_string(),
-        data_layout: "e-m:e-p:32:32-i1:8:32-i8:8:32-i16:16:32-i64:64-f64:64-a:0:32-n32".to_string(),
+        data_layout: "e-m:e-p:32:32-i8:8:32-i16:16:32-i64:64-n32".to_string(),
         arch: "xtensa".to_string(),
         target_os: "none".to_string(),
         target_env: String::new(),
