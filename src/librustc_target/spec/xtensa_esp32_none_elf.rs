@@ -12,12 +12,12 @@ pub fn target() -> TargetResult {
         target_os: "none".to_string(),
         target_env: String::new(),
         target_vendor: String::new(),
-        linker_flavor: LinkerFlavor::Lld(LldFlavor::Ld),
+        linker_flavor: LinkerFlavor::Gcc,
 
         options: TargetOptions {
             executables: true,
             cpu: "esp32".to_string(),
-            linker: Some("rust-lld".to_string()),
+            linker: Some("xtensa-esp32-elf-ld".to_string()),
             max_atomic_width: Some(32),
             // Because these devices have very little resources having an
             // unwinder is too onerous so we default to "abort" because the
