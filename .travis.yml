@@ -1,0 +1,6 @@
+
+dist: "trusty"
+before_install:
+  - python --version
+
+script: python x.py build
