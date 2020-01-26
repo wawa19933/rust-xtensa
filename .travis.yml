@@ -1,6 +1,6 @@
 
-dist: "trusty"
+dist: "bionic"
 before_install:
   - python --version
 
-script: python x.py build
+script: "sh configure --experimental-targets=Xtensa; python x.py build"
