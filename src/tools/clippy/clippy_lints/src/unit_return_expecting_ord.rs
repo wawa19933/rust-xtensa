@@ -4,7 +4,7 @@ use rustc_hir::def_id::DefId;
 use rustc_hir::{Expr, ExprKind, StmtKind};
 use rustc_lint::{LateContext, LateLintPass};
 use rustc_middle::ty;
-use rustc_middle::ty::{GenericPredicates, PredicateKind, ProjectionPredicate, TraitPredicate};
+use rustc_middle::ty::{GenericPredicates, PredicateAtom, ProjectionPredicate, TraitPredicate};
 use rustc_session::{declare_lint_pass, declare_tool_lint};
 use rustc_span::{BytePos, Span};
 
@@ -42,8 +42,8 @@ fn get_trait_predicates_for_trait_id<'tcx>(
     let mut preds = Vec::new();
     for (pred, _) in generics.predicates {
         if_chain! {
-            if let PredicateKind::Trait(poly_trait_pred, _) = pred.kind();
-            let trait_pred = cx.tcx.erase_late_bound_regions(&poly_trait_pred);
+            if let PredicateAtom::Trait(poly_trait_pred, _) = pred.skip_binders();
+            let trait_pred = cx.tcx.erase_late_bound_regions(&ty::Binder::bind(poly_trait_pred));
             if let Some(trait_def_id) = trait_id;
             if trait_def_id == trait_pred.trait_ref.def_id;
             then {
@@ -60,8 +60,8 @@ fn get_projection_pred<'tcx>(
     pred: TraitPredicate<'tcx>,
 ) -> Option<ProjectionPredicate<'tcx>> {
     generics.predicates.iter().find_map(|(proj_pred, _)| {
-        if let PredicateKind::Projection(proj_pred) = proj_pred.kind() {
-            let projection_pred = cx.tcx.erase_late_bound_regions(proj_pred);
+        if let ty::PredicateAtom::Projection(proj_pred) = proj_pred.skip_binders() {
+            let projection_pred = cx.tcx.erase_late_bound_regions(&ty::Binder::bind(proj_pred));
             if projection_pred.projection_ty.substs == pred.trait_ref.substs {
                 return Some(projection_pred);
             }
@@ -110,7 +110,7 @@ fn get_args_to_check<'tcx>(cx: &LateContext<'tcx>, expr: &'tcx Expr<'tcx>) -> Ve
 fn check_arg<'tcx>(cx: &LateContext<'tcx>, arg: &'tcx Expr<'tcx>) -> Option<(Span, Option<Span>)> {
     if_chain! {
         if let ExprKind::Closure(_, _fn_decl, body_id, span, _) = arg.kind;
-        if let ty::Closure(_def_id, substs) = &cx.typeck_results().node_type(arg.hir_id).kind;
+        if let ty::Closure(_def_id, substs) = &cx.typeck_results().node_type(arg.hir_id).kind();
         let ret_ty = substs.as_closure().sig().output();
         let ty = cx.tcx.erase_late_bound_regions(&ret_ty);
         if ty.is_unit();

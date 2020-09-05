@@ -63,7 +63,7 @@ impl<'tcx> LateLintPass<'tcx> for ByteCount {
                                 _ => { return; }
                             }
                         };
-                        if ty::Uint(UintTy::U8) != walk_ptrs_ty(cx.typeck_results().expr_ty(needle)).kind {
+                        if ty::Uint(UintTy::U8) != *walk_ptrs_ty(cx.typeck_results().expr_ty(needle)).kind() {
                             return;
                         }
                         let haystack = if let ExprKind::MethodCall(ref path, _, ref args, _) =
@@ -82,8 +82,8 @@ impl<'tcx> LateLintPass<'tcx> for ByteCount {
                             cx,
                             NAIVE_BYTECOUNT,
                             expr.span,
-                            "You appear to be counting bytes the naive way",
-                            "Consider using the bytecount crate",
+                            "you appear to be counting bytes the naive way",
+                            "consider using the bytecount crate",
                             format!("bytecount::count({}, {})",
                                     snippet_with_applicability(cx, haystack.span, "..", &mut applicability),
                                     snippet_with_applicability(cx, needle.span, "..", &mut applicability)),
